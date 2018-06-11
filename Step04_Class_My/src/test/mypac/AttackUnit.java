@@ -12,4 +12,15 @@ public class AttackUnit {
 	public void attack2() {
 		System.out.println("냠냠쩝쩝");
 	}
+	
+	
+	
+	public void defence() {
+		System.out.println("방어해요!");
+		
+	}
+	
+	public void move() {
+		System.out.println("움직여요!");
+	}
 }
