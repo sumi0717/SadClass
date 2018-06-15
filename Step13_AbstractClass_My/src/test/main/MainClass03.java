@@ -9,13 +9,22 @@ public class MainClass03 {
 
 			@Override
 			public void attack() {
-				System.out.println("만두를 공격해여!");
+				System.out.println("만두를 냠냠해여!");
 				
 			}
 //익명의 local Inner Class (중괄호 열고 닫고는 클래스!!!)
 //anonymous Class, 이름은 없지만 웨폰 클래스 상속받았으므로 오버라이드 해야함
 		};
 		useWeapon(w1);
+		
+		useWeapon(new Weapon() {
+
+			@Override
+			public void attack() {
+				System.out.println("누군가를 공격해요");
+			}
+			
+		});
 	}
 	public static void useWeapon(Weapon w) {
 		w.prepare();
