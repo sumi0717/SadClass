@@ -16,7 +16,7 @@ public class Wallet {
 	 *  붙여준다
 	 */
 	public static synchronized int getMoney(String name){
-		// synchronized 는 오차 숫자 범위 막는 예약어
+		// synchronized 는 숫자 오차 범위 막는 예약어
 		if(totalMoney>0){
 			try {
 				Thread.sleep(10);
