@@ -188,47 +188,42 @@ public class MemberDao {
 		return dto;
 	}
 	
-	//회원 목록을 리턴하는 메소드
 	public List<MemberDto> getList(){
-		//필요한 지역 변수 만들기
-		Connection conn = null;
+		//필요한 지역변수 만들기
+		Connection conn=null;
 		PreparedStatement pstmt=null;
-		ResultSet rs= null;
+		ResultSet rs=null;
 		//회원 정보를 저장할 List 객체 생성
 		List<MemberDto> list=new ArrayList<>();
-		
-		try{
+		try {
+			conn=new DBConnect().getConn();
 			String sql="SELECT num,name,addr FROM member"
 					+ " ORDER BY num ASC";
 			pstmt=conn.prepareStatement(sql);
-
-			rs=pstmt.executeQuery(sql);
+			//쿼리문 수행하고 ResultSet 리턴 받기
+			rs=pstmt.executeQuery();
 			while(rs.next()) {
 				//커서가 위치한 곳의 회원정보 읽어내기
 				int num=rs.getInt("num");
 				String name=rs.getString("name");
 				String addr=rs.getString("addr");
-				
-				//회원 정보를 MemberDto객체에 담아서
-				MemberDto dto=new MemberDto(num,name,addr);
-				list.add(dto); //List에 누적시키기
-				
-				//반복문 돌때마다 MemberDto 객체 1개씩 만들어짐
-				//new MemberDto(), new된 객체는 배열에 누적됨.
+				//회원정보를 MemberDto 객체에 담아서
+				MemberDto dto=new MemberDto(num, name, addr);
+				//List 에 누적 시키기
+				list.add(dto);
 			}
-		}catch(Exception se){
+		}catch(SQLException se) {
 			se.printStackTrace();
-
-		}finally{
-
-			try{
-				if(rs!=null) rs.close();
-				if(pstmt!=null) pstmt.close();
-				if(conn!=null) conn.close();
-			}catch(Exception e){}			
-		}
+		}finally {
+			try {
+				if(rs!=null)rs.close();
+				if(pstmt!=null)pstmt.close();
+				if(conn!=null)conn.close();
+			}catch(Exception e) {}
+		}		
 		return list;
 	}
+
 }	//MemberDAO
 
 
