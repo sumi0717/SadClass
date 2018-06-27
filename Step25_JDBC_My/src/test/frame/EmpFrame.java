@@ -32,7 +32,7 @@ public class EmpFrame extends JFrame
 		setLayout(new BorderLayout());
 		
 		//테이블의 칼럼명
-		String[] colNames= {"사원번호","사원이름", "월급", "부서이름", "고용일"};
+		String[] colNames= {"사원번호","사원이름", "월급", "부서이름", "입사일"};
 		//테이블에 연결할 모델 객체 
 		model=new DefaultTableModel(colNames, 0);
 		//테이블 객체를 생성하고 
@@ -80,9 +80,6 @@ public class EmpFrame extends JFrame
 			data[4]=tmp.getHiredate();
 			
 			model.addRow(data);
-		}
-		
-		
-	}
-	
+		}				
+	}	
 }

@@ -17,7 +17,7 @@ public class EmpDto {
 		this.sal = sal;
 		this.dname = dname;
 		this.hiredate = hiredate;
-	}
+	} 
 
 	public int getEmpno() {
 		return empno;
